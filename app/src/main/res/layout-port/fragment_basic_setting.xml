@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.texeasy.view.fragment.basicsetting.BasicSettingViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.admin.AdminFragment">
+
+        <TextView
+            android:id="@+id/tv_server_info"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:gravity="center_vertical"
+            android:text="@string/base_basic_setting_server_info"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/base_title_main"
+            android:textStyle="bold"
+            bind:layout_constraintHeight_percent="0.1887"
+            bind:layout_constraintLeft_toLeftOf="parent"
+            bind:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_ip"
+            style="@style/BaseSettingItemTitleStyle"
+            android:text="@string/base_basic_setting_server_ip"
+            bind:layout_constraintHeight_percent="0.1167"
+            bind:layout_constraintLeft_toLeftOf="parent"
+            bind:layout_constraintTop_toBottomOf="@id/tv_server_info" />
+
+        <EditText
+            android:id="@+id/et_ip"
+            style="@style/BaseSettingItemEditTextStyle"
+            android:paddingLeft="@dimen/dp_5"
+            android:text="@={ViewModel.serverIp}"
+            bind:layout_constraintHeight_percent="0.142"
+            bind:layout_constraintLeft_toLeftOf="@id/tv_ip"
+            bind:layout_constraintRight_toRightOf="@id/v"
+            bind:layout_constraintTop_toBottomOf="@id/tv_ip" />
+
+        <TextView
+            android:id="@+id/tv_port"
+            style="@style/BaseSettingItemTitleStyle"
+            android:text="@string/base_basic_setting_server_port"
+            bind:layout_constraintHeight_percent="0.1167"
+            bind:layout_constraintLeft_toLeftOf="parent"
+            bind:layout_constraintTop_toBottomOf="@id/et_ip" />
+
+        <EditText
+            android:id="@+id/et_port"
+            style="@style/BaseSettingItemEditTextStyle"
+            android:inputType="numberDecimal"
+            android:paddingLeft="@dimen/dp_5"
+            android:text="@={ViewModel.serverPort}"
+            bind:layout_constraintHeight_percent="0.142"
+            bind:layout_constraintLeft_toLeftOf="@id/tv_port"
+            bind:layout_constraintRight_toRightOf="@id/v"
+            bind:layout_constraintTop_toBottomOf="@id/tv_port" />
+
+        <TextView
+            android:id="@+id/tv_device_no"
+            style="@style/BaseSettingItemTitleStyle"
+            android:layout_marginLeft="@dimen/dp_22"
+            android:text="@string/base_basic_setting_device_no"
+            bind:layout_constraintHeight_percent="0.1167"
+            bind:layout_constraintLeft_toLeftOf="@id/v"
+            bind:layout_constraintTop_toBottomOf="@id/tv_server_info" />
+
+        <EditText
+            android:id="@+id/et_device_code"
+            style="@style/BaseSettingItemEditTextStyle"
+            android:layout_marginRight="@dimen/dp_20"
+            android:paddingLeft="@dimen/dp_5"
+            android:text="@={ViewModel.deviceCode}"
+            bind:layout_constraintHeight_percent="0.142"
+            bind:layout_constraintLeft_toLeftOf="@id/tv_device_no"
+            bind:layout_constraintRight_toRightOf="parent"
+            bind:layout_constraintTop_toBottomOf="@id/tv_device_no" />
+
+        <TextView
+            android:id="@+id/tv_socket_key"
+            style="@style/BaseSettingItemTitleStyle"
+            android:layout_marginLeft="@dimen/dp_22"
+            android:text="@string/base_basic_setting_socket_key"
+            bind:layout_constraintHeight_percent="0.1167"
+            bind:layout_constraintLeft_toLeftOf="@id/v"
+            bind:layout_constraintTop_toBottomOf="@id/et_device_code" />
+
+        <EditText
+            android:id="@+id/et_socket_key"
+            style="@style/BaseSettingItemEditTextStyle"
+            android:layout_marginRight="@dimen/dp_20"
+            android:imeOptions="actionDone"
+            android:paddingLeft="@dimen/dp_5"
+            android:text="@={ViewModel.socketKey}"
+            bind:layout_constraintHeight_percent="0.142"
+            bind:layout_constraintLeft_toLeftOf="@id/tv_socket_key"
+            bind:layout_constraintRight_toRightOf="parent"
+            bind:layout_constraintTop_toBottomOf="@id/tv_socket_key" />
+
+        <TextView
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
+            android:background="@drawable/base_login_button_selector"
+            android:gravity="center"
+            android:text="@string/base_device_equipment_save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:layout_constraintHeight_percent="0.12"
+            bind:layout_constraintTop_toBottomOf="@id/et_port"
+            bind:onClickCommand="@{ViewModel.onSaveCommand}" />
+
+        <View
+            android:id="@+id/v"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="@color/common_borderLineColor"
+            bind:layout_constraintBottom_toBottomOf="@id/et_port"
+            bind:layout_constraintLeft_toLeftOf="parent"
+            bind:layout_constraintRight_toRightOf="parent"
+            bind:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

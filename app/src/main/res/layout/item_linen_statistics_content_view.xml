@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.texeasy.view.dialog.linenstatistics.LinenStatisticsListContentViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_25"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                style="@style/itemStyle"
+                android:text="@{String.valueOf(viewModel.doorInfo.linenInfo.linenCode)}"
+                android:textColor="@color/textColorPrimary"
+                tools:text="1" />
+
+            <TextView
+                style="@style/itemStyle"
+                android:layout_weight="2"
+                android:text="@{viewModel.doorInfo.linenInfo.linenName}"
+                android:textColor="@color/textColorPrimary"
+                tools:text="被套" />
+
+            <TextView
+                style="@style/itemStyle"
+                android:text="@{String.valueOf(viewModel.doorInfo.linenInfo.linenCount)}"
+                android:textColor="@color/textColorPrimary"
+                tools:text="15" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginLeft="@dimen/dp_1"
+            android:layout_marginRight="@dimen/dp_1"
+            android:background="@color/common_borderLineColor" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BaseSettingItemTitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_marginLeft">@dimen/dp_20</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">#5d6877</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+    <style name="BaseBorderLineStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginLeft">@dimen/dp_10</item>
+        <item name="android:layout_marginRight">@dimen/dp_10</item>
+        <item name="android:background">@color/common_borderLineColor</item>
+    </style>
+</resources>

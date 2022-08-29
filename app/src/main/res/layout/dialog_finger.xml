@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="FingerDialog"
+            type="com.texeasy.view.dialog.FingerDialog" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dp_35"
+            android:background="@mipmap/base_ic_texeasy_logo"
+            app:layout_constraintDimensionRatio="126:40"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp_25"
+            android:text="@{FingerDialog.time}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_23"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/iv_logo"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_logo"
+            tools:text="20s" />
+
+        <View
+            android:id="@+id/v"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dp_25"
+            android:background="@drawable/app_bg_read_card"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="300:345"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintWidth_percent="0.469" />
+
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginRight="@dimen/dp_35"
+            android:text="@string/base_finger_tip"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_25"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tv_back"
+            app:layout_constraintLeft_toRightOf="@id/v"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/v"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp_22"
+            android:background="@drawable/base_home_button_selector"
+            android:gravity="center"
+            android:text="@string/base_back_to_home"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/v"
+            app:layout_constraintDimensionRatio="127:50"
+            app:layout_constraintLeft_toLeftOf="@id/tv_tip"
+            app:layout_constraintTop_toBottomOf="@id/tv_tip"
+            app:layout_constraintWidth_percent="0.2"
+            app:onClickCommand="@{FingerDialog.onCloseCommand}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

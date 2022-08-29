@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="base_home_button">@color/colorAccent</color>
+    <color name="base_home_button_press">@color/colorAccentDark</color>
+    <color name="base_home_button_disable">#88B4F8</color>
+
+    <color name="base_default_text">#333333</color>
+    <color name="base_default_text_hint">#999999</color>
+
+    <color name="base_default_text_error">#FA0202</color>
+    <color name="base_setting_btn">#bbdbfb</color>
+    <color name="base_line">#72aefd</color>
+    <color name="base_list_title">#899194</color>
+    <color name="base_gray_dialog_bg">#f8f8f9</color>
+
+    <color name="base_home_text">#f2f3f5</color>
+</resources>

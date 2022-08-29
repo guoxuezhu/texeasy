@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.texeasy.view.fragment.rfid.RFidSettingViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="com.texeasy.base.constant.HardwareConfig" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="11"
+            bind:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_door_tip"
+                style="@style/BaseRfidSettingTextViewStyle"
+                android:layout_weight="2"
+                android:text="柜门" />
+
+            <TextView
+                android:id="@+id/tv_antenna_tip"
+                style="@style/BaseRfidSettingTextViewStyle"
+                android:layout_weight="4"
+                android:text="天线" />
+
+            <TextView
+                android:id="@+id/tv_power_tip"
+                style="@style/BaseRfidSettingTextViewStyle"
+                android:layout_weight="4"
+                android:text="功率" />
+
+            <TextView
+                style="@style/BaseRfidSettingTextViewStyle"
+                android:layout_marginRight="@dimen/dp_5"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/v1"
+            style="@style/BaseBorderLineStyle"
+            bind:layout_constraintTop_toBottomOf="@id/ll" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_rfid"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            bind:layout_constraintBottom_toTopOf="@id/btn_save"
+            bind:layout_constraintTop_toBottomOf="@id/v1" />
+
+        <TextView
+            android:id="@+id/btn_add"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dp_33"
+            android:layout_marginRight="@dimen/dp_33"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:background="@drawable/base_login_button_selector"
+            android:gravity="center"
+            android:text="@string/base_device_equipment_add"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            android:visibility="@{ViewModel.isShowKeyboard?View.GONE:View.VISIBLE}"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:layout_constraintHeight_percent="0.12"
+            bind:layout_constraintLeft_toLeftOf="parent"
+            bind:layout_constraintRight_toLeftOf="@id/btn_save"
+            bind:onClickCommand="@{ViewModel.onAddCommand}" />
+
+        <TextView
+            android:id="@+id/btn_save"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dp_33"
+            android:layout_marginRight="@dimen/dp_33"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:background="@drawable/base_login_button_selector"
+            android:gravity="center"
+            android:text="@string/base_device_equipment_save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            android:visibility="@{ViewModel.isShowKeyboard?View.GONE:View.VISIBLE}"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:layout_constraintHeight_percent="0.12"
+            bind:layout_constraintLeft_toRightOf="@id/btn_add"
+            bind:layout_constraintRight_toRightOf="parent"
+            bind:onClickCommand="@{ViewModel.onSaveCommand}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

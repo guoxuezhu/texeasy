@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="FaceDialog"
+            type="com.texeasy.view.dialog.FaceDialog" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/home_bg_color">
+
+        <include
+            android:id="@+id/home_toolbar_view"
+            layout="@layout/base_home_toolbar_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_34"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{FaceDialog.tip}"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/sp_15"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/fl_face"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_toolbar_view"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="请您面向屏幕，开始刷脸" />
+
+
+        <FrameLayout
+            android:id="@+id/fl_face"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/v"
+            app:layout_constraintDimensionRatio="3:4"
+            app:layout_constraintHeight_percent="0.6"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_tip"
+            tools:visibility="visible">
+
+            <TextureView
+                android:id="@+id/dual_camera_texture_preview_rgb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.texeasy.view.widget.FaceRectView
+                android:id="@+id/dual_camera_face_rect_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <FrameLayout
+                android:id="@+id/fl_recognize_ir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom">
+
+                <TextureView
+                    android:id="@+id/dual_camera_texture_preview_ir"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.texeasy.view.widget.FaceRectView
+                    android:id="@+id/dual_camera_face_rect_view_ir"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </FrameLayout>
+
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/fl_face"
+            app:layout_constraintLeft_toLeftOf="@id/fl_face"
+            app:layout_constraintRight_toRightOf="@id/fl_face"
+            app:layout_constraintTop_toTopOf="@id/fl_face"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/v_place"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/fl_face"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="@id/fl_face"
+            app:layout_constraintRight_toRightOf="@id/fl_face"
+            app:layout_constraintTop_toTopOf="@id/fl_face" />
+
+        <View
+            android:id="@+id/v_place1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/home_bg_color"
+            app:layout_constraintBottom_toBottomOf="@id/fl_face"
+            app:layout_constraintLeft_toLeftOf="@id/fl_face"
+            app:layout_constraintRight_toRightOf="@id/fl_face"
+            app:layout_constraintTop_toBottomOf="@id/sv" />
+
+        <View
+            android:id="@+id/v_place2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/home_bg_color"
+            app:layout_constraintBottom_toTopOf="@id/sv"
+            app:layout_constraintLeft_toLeftOf="@id/fl_face"
+            app:layout_constraintRight_toRightOf="@id/fl_face"
+            app:layout_constraintTop_toTopOf="@id/fl_face" />
+
+        <com.texeasy.view.widget.ScanView
+            android:id="@+id/sv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@id/v_place"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/v_place" />
+
+        <View
+            android:id="@+id/v"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            app:layout_constraintBottom_toTopOf="@id/tv"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fl_face" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="@{FaceDialog.name}"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/sp_15"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sv"
+            tools:text="张哈哈" />
+
+        <TextView
+            android:id="@+id/tv_job"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{FaceDialog.job}"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/sp_15"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            tools:text="外科医生" />
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginRight="@dimen/dp_30"
+            android:gravity="center"
+            android:padding="@dimen/dp_12"
+            android:text="@string/base_back_to_home"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v" />
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_30"
+            android:background="@drawable/app_home_logout_button_shape"
+            android:gravity="center"
+            android:padding="@dimen/dp_12"
+            android:text="@string/base_back_to_home"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            android:visibility="@{FaceDialog.isShowBackBtn ? View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@id/tv"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_sure"
+            app:layout_constraintTop_toTopOf="@id/tv"
+            app:layout_goneMarginRight="@dimen/dp_30"
+            app:onClickCommand="@{FaceDialog.onCloseCommand}"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_sure"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_30"
+            android:background="@drawable/app_back_button_shape"
+            android:gravity="center"
+            android:padding="@dimen/dp_12"
+            android:text="@string/base_sure"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/tv"
+            app:layout_constraintLeft_toRightOf="@id/tv_back"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv"
+            app:onClickCommand="@{FaceDialog.onSureCommand}"
+            tools:visibility="gone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

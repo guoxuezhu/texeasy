@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.texeasy.view.dialog.linenstatistics.LinenStatisticsListHeadViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_26"
+            android:background="@drawable/base_dialog_title_shape"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                style="@style/itemStyle"
+                android:text="@string/app_linen_no" />
+
+            <TextView
+                style="@style/itemStyle"
+                android:layout_weight="2"
+                android:text="@string/app_linen_name" />
+
+            <TextView
+                style="@style/itemStyle"
+                android:text="@string/app_linen_current_count" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/common_borderLineColor" />
+    </LinearLayout>
+</layout>

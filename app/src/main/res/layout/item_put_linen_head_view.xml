@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.texeasy.view.fragment.putlinen.PutLinenListHeadViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_26"
+        android:background="@drawable/base_dialog_title_shape"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <TextView
+            style="@style/itemStyle"
+            android:text="序号" />
+
+        <TextView
+            style="@style/itemStyle"
+            android:layout_weight="2"
+            android:text="布草名称" />
+
+        <TextView
+            style="@style/itemStyle"
+            android:text="数量" />
+    </LinearLayout>
+</layout>

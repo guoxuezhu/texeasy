@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="itemStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/base_list_title</item>
+    </style>
+
+    <style name="BaseHomeText.BaseHomeEnText">
+        <item name="android:layout_marginBottom">@dimen/dp_18</item>
+        <item name="android:textSize">@dimen/sp_9</item>
+    </style>
+
+    <style name="BaseHomeText.BaseHomeCnText">
+        <item name="android:layout_marginTop">@dimen/dp_15</item>
+        <item name="android:textSize">@dimen/sp_17</item>
+    </style>
+
+    <style name="BaseHomeText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/fzzxhjw</item>
+        <item name="android:textColor">@color/base_home_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <declare-styleable name="RoundTextureView">
+        <attr name="textureRadius" format="float"/>
+    </declare-styleable>
+</resources>

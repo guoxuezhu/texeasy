@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="ShipperLoginDialog"
+            type="com.texeasy.view.dialog.ShipperLoginDialog" />
+
+        <import type="com.texeasy.utils.ViewExtensions" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="@color/base_line">
+
+        <View
+            android:id="@+id/v"
+            android:layout_width="@dimen/dp_404"
+            android:layout_height="@dimen/dp_300"
+            android:background="@drawable/base_round_10dp_shape"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <View
+            android:id="@+id/v2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginRight="@dimen/dp_30"
+            android:background="@color/base_gray_dialog_bg"
+            app:layout_constraintLeft_toLeftOf="@id/v"
+            app:layout_constraintRight_toRightOf="@id/v"
+            app:layout_constraintTop_toTopOf="@id/tv_card_login" />
+
+        <TextView
+            android:id="@+id/tv_card_login"
+            android:layout_width="@dimen/dp_202"
+            android:layout_height="@dimen/dp_55"
+            android:background="@{ViewExtensions.getShipperDialogLeftTabDrawable(ShipperLoginDialog.isCardTab)}"
+            android:gravity="center"
+            android:text="@string/base_account_card_login"
+            android:textColor="@{ViewExtensions.getShipperDialogTabTextColor(ShipperLoginDialog.isCardTab)}"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/v"
+            app:layout_constraintRight_toLeftOf="@id/tv_psw_login"
+            app:layout_constraintTop_toTopOf="@id/v"
+            app:onClickCommand="@{ShipperLoginDialog.onCardTabCommand}"
+            tools:background="@drawable/base_dialog_shipper_left_selected_shape"
+            tools:textColor="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/tv_psw_login"
+            android:layout_width="@dimen/dp_202"
+            android:layout_height="@dimen/dp_55"
+            android:background="@{ViewExtensions.getShipperDialogRightTabDrawable(ShipperLoginDialog.isCardTab)}"
+            android:gravity="center"
+            android:text="@string/base_account_psw_login"
+            android:textColor="@{ViewExtensions.getShipperDialogTabTextColor(!ShipperLoginDialog.isCardTab)}"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/tv_card_login"
+            app:layout_constraintRight_toRightOf="@id/v"
+            app:layout_constraintTop_toTopOf="@id/v"
+            app:onClickCommand="@{ShipperLoginDialog.onPswTabCommand}"
+            tools:background="@drawable/base_dialog_shipper_right_shape"
+            tools:textColor="@color/textColorPrimary" />
+
+        <EditText
+            android:id="@+id/tv_name"
+            style="@style/EasyTextInputEditTextStyle"
+            android:layout_width="@dimen/dp_352"
+            android:layout_height="@dimen/dp_52"
+            android:layout_marginTop="@dimen/dp_35"
+            android:background="@drawable/base_login_dialog_btn_shape"
+            android:gravity="center_vertical"
+            android:hint="@string/base_admin_name"
+            android:paddingLeft="@dimen/dp_18"
+            android:textColorHint="@color/base_default_text_hint"
+            android:visibility="@{ShipperLoginDialog.isCardTab?View.GONE:View.VISIBLE}"
+            app:layout_constraintLeft_toLeftOf="@+id/v"
+            app:layout_constraintRight_toRightOf="@id/v"
+            app:layout_constraintTop_toBottomOf="@id/tv_card_login"
+            app:textChanged="@{ShipperLoginDialog.onAccountCommand}"
+            tools:visibility="gone" />
+
+        <EditText
+            android:id="@+id/tv_psw"
+            style="@style/EasyTextInputEditTextStyle"
+            android:layout_width="@dimen/dp_352"
+            android:layout_height="@dimen/dp_52"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/base_login_dialog_btn_shape"
+            android:gravity="center_vertical"
+            android:hint="@string/base_admin_psw"
+            android:imeOptions="actionDone"
+            android:paddingLeft="@dimen/dp_18"
+            android:textColorHint="@color/base_default_text_hint"
+            android:visibility="@{ShipperLoginDialog.isCardTab?View.GONE:View.VISIBLE}"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_name"
+            app:layout_constraintRight_toRightOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            app:textChanged="@{ShipperLoginDialog.onPswCommand}"
+            tools:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_read_card"
+            android:layout_width="@dimen/dp_190"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dp_29"
+            android:layout_marginTop="@dimen/dp_35"
+            android:layout_marginBottom="@dimen/dp_35"
+            android:background="@mipmap/base_ic_read_card"
+            android:visibility="@{ShipperLoginDialog.isCardTab?View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toTopOf="@id/tv_login"
+            app:layout_constraintLeft_toLeftOf="@id/v"
+            app:layout_constraintRight_toRightOf="@id/tv_card_login"
+            app:layout_constraintTop_toBottomOf="@id/tv_card_login" />
+
+        <TextView
+            android:id="@+id/tv_read_card_tip"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_30"
+            android:text="@string/base_read_card_tip"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/sp_25"
+            android:textStyle="bold"
+            android:visibility="@{ShipperLoginDialog.isCardTab?View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@id/iv_read_card"
+            app:layout_constraintLeft_toRightOf="@id/iv_read_card"
+            app:layout_constraintRight_toRightOf="@id/v"
+            app:layout_constraintTop_toTopOf="@id/iv_read_card"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <ImageView
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_100"
+            android:padding="@dimen/dp_6"
+            android:src="@mipmap/base_ic_close"
+            app:layout_constraintLeft_toRightOf="@id/v"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/v"
+            app:onClickCommand="@{ShipperLoginDialog.onCloseCommand}" />
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="@dimen/dp_352"
+            android:layout_height="@dimen/dp_45"
+            android:layout_marginBottom="@dimen/dp_24"
+            android:background="@drawable/base_login_button_selector"
+            android:gravity="center"
+            android:text="@string/base_admin_login"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            android:visibility="@{ShipperLoginDialog.isCardTab?View.GONE:View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@id/v"
+            app:layout_constraintLeft_toLeftOf="@id/tv_name"
+            app:layout_constraintRight_toRightOf="@id/tv_name"
+            app:onClickCommand="@{ShipperLoginDialog.onLoginCommand}"
+            tools:visibility="gone" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

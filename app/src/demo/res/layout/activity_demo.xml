@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.texeasy.view.activity.demo.DemoActivity" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_2"
+            android:paddingBottom="@dimen/dp_3"
+            tools:context=".demo.DemoActivity">
+
+            <Button
+                android:id="@+id/btn_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="读卡"
+                bind:layout_constraintLeft_toLeftOf="parent"
+                bind:layout_constraintTop_toTopOf="parent"
+                bind:onClickCommand="@{ViewModel.onReadCardCommand}" />
+
+            <TextView
+                android:id="@+id/tv_card_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:text="数据："
+                bind:layout_constraintBottom_toBottomOf="@id/btn_card"
+                bind:layout_constraintLeft_toRightOf="@id/btn_card"
+                bind:layout_constraintTop_toTopOf="@id/btn_card" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{ViewModel.cardData}"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_card"
+                bind:layout_constraintLeft_toRightOf="@id/tv_card_tip"
+                bind:layout_constraintTop_toTopOf="@id/btn_card" />
+
+            <Button
+                android:id="@+id/btn_scan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="扫码"
+                bind:layout_constraintLeft_toLeftOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/btn_card"
+                bind:onClickCommand="@{ViewModel.onScanCommand}" />
+
+            <TextView
+                android:id="@+id/tv_scan_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:text="数据："
+                bind:layout_constraintBottom_toBottomOf="@id/btn_scan"
+                bind:layout_constraintLeft_toRightOf="@id/btn_scan"
+                bind:layout_constraintTop_toTopOf="@id/btn_scan" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{ViewModel.scanData}"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_scan"
+                bind:layout_constraintLeft_toRightOf="@id/tv_scan_tip"
+                bind:layout_constraintTop_toTopOf="@id/btn_scan" />
+
+            <Button
+                android:id="@+id/btn_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="开门"
+                bind:layout_constraintLeft_toLeftOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/btn_scan"
+                bind:onClickCommand="@{ViewModel.onBoxCommand}" />
+
+            <EditText
+                android:id="@+id/et_box"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:background="@drawable/base_round_stroke_0dp_shape"
+                android:hint="请输入门号"
+                android:minWidth="@dimen/dp_100"
+                android:text="@={ViewModel.boxCode}"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_box"
+                bind:layout_constraintLeft_toRightOf="@id/btn_box"
+                bind:layout_constraintTop_toTopOf="@id/btn_box" />
+
+            <TextView
+                android:id="@+id/tv_box_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:text="数据："
+                bind:layout_constraintBottom_toBottomOf="@id/btn_box"
+                bind:layout_constraintLeft_toRightOf="@id/et_box"
+                bind:layout_constraintTop_toTopOf="@id/btn_box" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{ViewModel.boxData}"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_box"
+                bind:layout_constraintLeft_toRightOf="@id/tv_box_tip"
+                bind:layout_constraintTop_toTopOf="@id/btn_box" />
+
+
+            <Button
+                android:id="@+id/btn_box_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="获取门状态"
+                bind:layout_constraintLeft_toLeftOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/btn_box"
+                bind:onClickCommand="@{ViewModel.onBoxStatusCommand}" />
+
+            <EditText
+                android:id="@+id/et_box_status"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:background="@drawable/base_round_stroke_0dp_shape"
+                android:hint="请输入门号"
+                android:minWidth="@dimen/dp_100"
+                android:text="@={ViewModel.boxStatusCode}"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_box_status"
+                bind:layout_constraintLeft_toRightOf="@id/btn_box_status"
+                bind:layout_constraintTop_toTopOf="@id/btn_box_status" />
+
+            <TextView
+                android:id="@+id/tv_box_status_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:text="状态："
+                bind:layout_constraintBottom_toBottomOf="@id/btn_box_status"
+                bind:layout_constraintLeft_toRightOf="@id/et_box_status"
+                bind:layout_constraintTop_toTopOf="@id/btn_box_status" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{ViewModel.boxStatusData}"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_box_status"
+                bind:layout_constraintLeft_toRightOf="@id/tv_box_status_tip"
+                bind:layout_constraintTop_toTopOf="@id/btn_box_status" />
+
+            <Button
+                android:id="@+id/btn_open_finger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="打开指纹"
+                bind:layout_constraintLeft_toLeftOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/et_box_status"
+                bind:onClickCommand="@{ViewModel.onOpenFingerCommand}" />
+
+            <Button
+                android:id="@+id/btn_get_finger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:text="获取指纹"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_open_finger"
+                bind:layout_constraintLeft_toRightOf="@id/btn_open_finger"
+                bind:layout_constraintTop_toTopOf="@id/btn_open_finger"
+                bind:onClickCommand="@{ViewModel.onGetFingerFeatureCommand}" />
+
+            <Button
+                android:id="@+id/btn_match_finger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:text="比对指纹"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_get_finger"
+                bind:layout_constraintLeft_toRightOf="@id/btn_get_finger"
+                bind:layout_constraintTop_toTopOf="@id/btn_get_finger"
+                bind:onClickCommand="@{ViewModel.onMatchFingerFeatureCommand}" />
+
+            <Button
+                android:id="@+id/btn_template_finger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:text="指纹模板"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_match_finger"
+                bind:layout_constraintLeft_toRightOf="@id/btn_match_finger"
+                bind:layout_constraintTop_toTopOf="@id/btn_match_finger"
+                bind:onClickCommand="@{ViewModel.onGetFingerTemplateCommand}" />
+
+            <Button
+                android:id="@+id/btn_image_finger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:text="指纹图像"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_template_finger"
+                bind:layout_constraintLeft_toRightOf="@id/btn_template_finger"
+                bind:layout_constraintTop_toTopOf="@id/btn_template_finger"
+                bind:onClickCommand="@{ViewModel.onGetFingerImageCommand}" />
+
+            <Button
+                android:id="@+id/btn_version_finger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:text="指纹版本"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_image_finger"
+                bind:layout_constraintLeft_toRightOf="@id/btn_image_finger"
+                bind:layout_constraintTop_toTopOf="@id/btn_image_finger"
+                bind:onClickCommand="@{ViewModel.onGetFingerVersionCommand}" />
+
+            <Button
+                android:id="@+id/btn_vendor_finger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:text="指纹厂家"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_version_finger"
+                bind:layout_constraintLeft_toRightOf="@id/btn_version_finger"
+                bind:layout_constraintTop_toTopOf="@id/btn_version_finger"
+                bind:onClickCommand="@{ViewModel.onGetFingerVendorCommand}" />
+
+            <Button
+                android:id="@+id/btn_close_finger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:text="关闭指纹"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_vendor_finger"
+                bind:layout_constraintLeft_toRightOf="@id/btn_vendor_finger"
+                bind:layout_constraintTop_toTopOf="@id/btn_vendor_finger"
+                bind:onClickCommand="@{ViewModel.onCloseFingerCommand}" />
+
+            <ImageView
+                android:id="@+id/iv_finger_image"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60"
+                android:background="@mipmap/app_ic_shipper"
+                bind:layout_constraintRight_toRightOf="parent"
+                bind:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_rfid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:clickable="@{!ViewModel.isRfidDoing&amp;&amp;!ViewModel.isInventorying&amp;&amp;!ViewModel.isRfidLongDoing}"
+                android:enabled="@{!ViewModel.isRfidDoing&amp;&amp;!ViewModel.isInventorying&amp;&amp;!ViewModel.isRfidLongDoing}"
+                android:text="@{ViewModel.isRfidDoing||ViewModel.isInventorying?`盘存中..`:`盘存`}"
+                bind:layout_constraintLeft_toLeftOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/btn_open_finger"
+                bind:onClickCommand="@{ViewModel.onRfidCommand}"
+                tools:text="盘存" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请输入天线(以,分隔)："
+                bind:layout_constraintBottom_toTopOf="@id/et_rfid"
+                bind:layout_constraintLeft_toLeftOf="@id/et_rfid" />
+
+            <EditText
+                android:id="@+id/et_rfid"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:autofillHints=""
+                android:background="@drawable/base_round_stroke_0dp_shape"
+                android:digits="0123456789,"
+                android:hint="输入天线(以,分隔)"
+                android:text="@={ViewModel.antennasData}"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_rfid"
+                bind:layout_constraintLeft_toRightOf="@id/btn_rfid"
+                bind:layout_constraintTop_toTopOf="@id/btn_rfid" />
+
+
+            <TextView
+                android:id="@+id/tv_rfid_com"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:text="@{ViewModel.com}"
+                android:textColor="@color/blue"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_rfid"
+                bind:layout_constraintLeft_toRightOf="@id/et_rfid"
+                bind:layout_constraintTop_toTopOf="@id/btn_rfid"
+                bind:onClickCommand="@{ViewModel.onComCommand}"
+                tools:text="@string/base_com_tty3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="单次盘点时长："
+                bind:layout_constraintBottom_toTopOf="@id/et_rfid_time"
+                bind:layout_constraintLeft_toLeftOf="@id/et_rfid_time" />
+
+            <EditText
+                android:id="@+id/et_rfid_time"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:background="@drawable/base_round_stroke_0dp_shape"
+                android:hint="单次盘点时长"
+                android:inputType="numberDecimal"
+                android:text="@={ViewModel.rfidTime}"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_rfid"
+                bind:layout_constraintLeft_toRightOf="@id/tv_rfid_com"
+                bind:layout_constraintTop_toTopOf="@id/btn_rfid" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="盘点次数："
+                bind:layout_constraintBottom_toTopOf="@id/et_rfid_count"
+                bind:layout_constraintLeft_toLeftOf="@id/et_rfid_count" />
+
+            <EditText
+                android:id="@+id/et_rfid_count"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:background="@drawable/base_round_stroke_0dp_shape"
+                android:hint="盘点次数"
+                android:inputType="numberDecimal"
+                android:text="@={ViewModel.rfidCount}"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_rfid"
+                bind:layout_constraintLeft_toRightOf="@id/et_rfid_time"
+                bind:layout_constraintTop_toTopOf="@id/btn_rfid" />
+
+            <Button
+                android:id="@+id/btn_rfid_stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:text="停止"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_rfid"
+                bind:layout_constraintLeft_toRightOf="@id/et_rfid_count"
+                bind:layout_constraintTop_toTopOf="@id/btn_rfid"
+                bind:onClickCommand="@{ViewModel.onRfidStopCommand}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置功率(0-33)："
+                bind:layout_constraintBottom_toTopOf="@id/et_rfid_power"
+                bind:layout_constraintLeft_toLeftOf="@id/et_rfid_power" />
+
+            <EditText
+                android:id="@+id/et_rfid_power"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:background="@drawable/base_round_stroke_0dp_shape"
+                android:hint="设置功率"
+                android:inputType="numberDecimal"
+                android:text="@={ViewModel.rfidPower+``}"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_rfid"
+                bind:layout_constraintLeft_toRightOf="@id/btn_rfid_stop"
+                bind:layout_constraintTop_toTopOf="@id/btn_rfid" />
+
+            <Button
+                android:id="@+id/btn_rfid_power"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:text="设置功率"
+                bind:layout_constraintBottom_toBottomOf="@id/btn_rfid"
+                bind:layout_constraintLeft_toRightOf="@id/et_rfid_power"
+                bind:layout_constraintTop_toTopOf="@id/btn_rfid"
+                bind:onClickCommand="@{ViewModel.onRfidPowerCommand}" />
+
+            <TextView
+                android:id="@+id/tv_rfid_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="@{`盘点数量为`+ViewModel.rfidReadCount+` \n统计次数为`+(ViewModel.successCount+ViewModel.errorCount)+` \n成功次数为`+ViewModel.successCount+` \n错误次数为`+ViewModel.errorCount+` : `}"
+                bind:layout_constraintLeft_toLeftOf="@id/et_rfid"
+                bind:layout_constraintTop_toBottomOf="@id/et_rfid"
+                tools:text="盘点数量为" />
+
+            <Button
+                android:id="@+id/btn_rfid_long"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:clickable="@{!ViewModel.isRfidDoing&amp;&amp;!ViewModel.isInventorying&amp;&amp;!ViewModel.isRfidLongDoing}"
+                android:enabled="@{!ViewModel.isRfidDoing&amp;&amp;!ViewModel.isInventorying&amp;&amp;!ViewModel.isRfidLongDoing}"
+                android:text="@{ViewModel.isRfidLongDoing?`长盘存中..`:`长盘存`}"
+                bind:layout_constraintLeft_toLeftOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/btn_rfid"
+                bind:onClickCommand="@{ViewModel.onRfidLongCommand}"
+                tools:text="长盘存" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/base_round_stroke_0dp_shape"
+                android:scrollbars="vertical"
+                bind:layout_constraintBottom_toBottomOf="parent"
+                bind:layout_constraintLeft_toRightOf="@id/tv_rfid_tip"
+                bind:layout_constraintRight_toRightOf="parent"
+                bind:layout_constraintTop_toTopOf="@id/tv_rfid_tip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center_vertical"
+                    android:text="@{ViewModel.rfidData}" />
+            </androidx.core.widget.NestedScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

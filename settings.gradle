@@ -1,0 +1,13 @@
+include ':app'
+include 'base'
+project(':base').projectDir = new File(rootDir, 'library/base/')
+include 'common'
+project(':common').projectDir = new File(rootDir, 'library/common/')
+include 'repository'
+project(':repository').projectDir = new File(rootDir, 'library/repository/')
+include 'hardware'
+project(':hardware').projectDir = new File(rootDir, 'library/hardware/')
+include 'face'
+project(':face').projectDir = new File(rootDir, 'library/face/')
+include 'logcat'
+project(':logcat').projectDir = new File(rootDir, 'library/logcat/')

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="DeviceLoginDialog"
+            type="com.texeasy.view.dialog.DeviceLoginDialog" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="@color/base_line">
+
+        <View
+            android:id="@+id/v"
+            android:layout_width="@dimen/dp_305"
+            android:layout_height="@dimen/dp_242"
+            android:background="@drawable/base_login_dialog_shape"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_56"
+            android:gravity="center"
+            android:text="@string/base_device_login"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/v"
+            app:layout_constraintRight_toRightOf="@id/v"
+            app:layout_constraintTop_toTopOf="@id/v" />
+
+        <ImageView
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginRight="@dimen/dp_5"
+            android:padding="@dimen/dp_6"
+            android:src="@mipmap/base_ic_close"
+            app:layout_constraintRight_toRightOf="@id/tv_login"
+            app:layout_constraintTop_toTopOf="@id/tv_login"
+            app:onClickCommand="@{DeviceLoginDialog.onCloseCommand}" />
+
+        <EditText
+            android:id="@+id/tv_name"
+            style="@style/EasyTextInputEditTextStyle"
+            android:layout_width="@dimen/dp_260"
+            android:layout_height="@dimen/dp_43"
+            android:layout_marginLeft="@dimen/dp_26"
+            android:background="@drawable/base_login_dialog_btn_shape"
+            android:gravity="center_vertical"
+            android:hint="@string/base_admin_name"
+            android:paddingLeft="@dimen/dp_18"
+            android:textColorHint="@color/base_default_text_hint"
+            app:layout_constraintLeft_toLeftOf="@+id/v"
+            app:layout_constraintTop_toBottomOf="@id/tv_login"
+            app:textChanged="@{DeviceLoginDialog.onAccountCommand}" />
+
+        <EditText
+            android:id="@+id/tv_psw"
+            style="@style/EasyTextInputEditTextStyle"
+            android:layout_width="@dimen/dp_260"
+            android:layout_height="@dimen/dp_43"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/base_login_dialog_btn_shape"
+            android:gravity="center_vertical"
+            android:hint="@string/base_admin_psw"
+            android:imeOptions="actionDone"
+            android:paddingLeft="@dimen/dp_18"
+            android:textColorHint="@color/base_default_text_hint"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_name"
+            app:layout_constraintRight_toRightOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            app:textChanged="@{DeviceLoginDialog.onPswCommand}" />
+
+        <TextView
+            android:layout_width="@dimen/dp_260"
+            android:layout_height="@dimen/dp_40"
+            android:background="@drawable/base_login_button_selector"
+            android:gravity="center"
+            android:text="@string/base_admin_login"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintBottom_toBottomOf="@id/v"
+            app:layout_constraintLeft_toLeftOf="@id/tv_name"
+            app:layout_constraintRight_toRightOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_psw"
+            app:onClickCommand="@{DeviceLoginDialog.onLoginCommand}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

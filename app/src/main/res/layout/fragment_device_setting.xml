@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.texeasy.view.fragment.devicesetting.DeviceSettingViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="com.texeasy.base.constant.HardwareConfig" />
+
+        <import type="com.texeasy.BuildConfig" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:context=".ui.admin.AdminFragment">
+
+        <TextView
+            android:id="@+id/tv_features"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dp_33"
+            android:gravity="center_vertical"
+            android:text="@string/base_device_equipment_features"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold"
+            bind:layout_constraintHeight_percent="0.1887"
+            bind:layout_constraintLeft_toLeftOf="parent"
+            bind:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/v"
+            style="@style/BaseBorderLineStyle"
+            bind:layout_constraintTop_toBottomOf="@id/tv_features" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            bind:layout_constraintBottom_toTopOf="@id/btn_save"
+            bind:layout_constraintLeft_toLeftOf="parent"
+            bind:layout_constraintRight_toRightOf="parent"
+            bind:layout_constraintTop_toBottomOf="@id/v">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_equipment_beat"
+                    style="@style/BaseInspectItemStyle"
+                    android:text="定时自检"
+                    android:visibility="@{`department`.equals(BuildConfig.FLAVOR)?View.GONE:View.VISIBLE}"
+                    bind:layout_constraintLeft_toLeftOf="parent"
+                    bind:layout_constraintTop_toTopOf="parent" />
+
+                <RadioGroup
+                    android:id="@+id/rg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_36"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="@{`department`.equals(BuildConfig.FLAVOR)?View.GONE:View.VISIBLE}"
+                    bind:checkId="@{ViewModel.checkId}"
+                    bind:layout_constraintBottom_toBottomOf="@id/tv_equipment_beat"
+                    bind:layout_constraintHeight_percent="0.1167"
+                    bind:layout_constraintLeft_toRightOf="@id/tv_equipment_beat"
+                    bind:layout_constraintTop_toTopOf="@id/tv_equipment_beat"
+                    bind:onCheckCommand="@{ViewModel.onItemCheckCommand}">
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/rb_item_1"
+                        style="@style/BaseInspectItemBeatStyle"
+                        android:layout_marginLeft="@dimen/dp_25"
+                        tools:background="@drawable/base_round_stroke_10dp_selected_shape"
+                        tools:text="5分钟" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/rb_item_2"
+                        style="@style/BaseInspectItemBeatStyle"
+                        tools:text="10分钟" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/rb_item_3"
+                        style="@style/BaseInspectItemBeatStyle"
+                        tools:text="15分钟" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/rb_item_4"
+                        style="@style/BaseInspectItemBeatStyle"
+                        tools:text="20分钟" />
+                </RadioGroup>
+
+                <View
+                    android:id="@+id/v1"
+                    style="@style/BaseBorderLineStyle"
+                    android:visibility="gone"
+                    bind:layout_constraintTop_toBottomOf="@id/tv_equipment_beat" />
+
+                <TextView
+                    android:id="@+id/tv_equipment_voice"
+                    style="@style/BaseInspectItemStyle"
+                    android:text="@string/base_device_equipment_voice_broadcast"
+                    android:visibility="gone"
+                    bind:layout_constraintHeight_percent="0.2"
+                    bind:layout_constraintLeft_toLeftOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@id/v1" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/sw_equipment_voice"
+                    android:layout_width="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_25"
+                    android:layout_marginLeft="@dimen/dp_25"
+                    android:checked="@{ViewModel.uc.voiceStatus.booleanValue()}"
+                    android:enabled="@{ViewModel.isEnableVoiceBtn}"
+                    android:visibility="gone"
+                    bind:layout_constraintBottom_toBottomOf="@id/tv_equipment_voice"
+                    bind:layout_constraintLeft_toRightOf="@id/tv_equipment_voice"
+                    bind:layout_constraintTop_toTopOf="@id/tv_equipment_voice"
+                    bind:onClickCommand="@{ViewModel.onVoiceCommand}"
+                    tools:checked="true" />
+
+                <View
+                    android:id="@+id/v2"
+                    style="@style/BaseBorderLineStyle"
+                    android:visibility="gone"
+                    bind:layout_constraintTop_toBottomOf="@id/tv_equipment_voice" />
+
+                <TextView
+                    android:id="@+id/tv_self_check"
+                    style="@style/BaseInspectItemStyle"
+                    android:text="@string/base_device_equipment_self_check"
+                    android:visibility="gone"
+                    bind:layout_constraintLeft_toLeftOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@id/v2" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/sw_self_check"
+                    android:layout_width="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_25"
+                    android:layout_marginLeft="@dimen/dp_25"
+                    android:checked="@{ViewModel.uc.selfCheckStatus.booleanValue()}"
+                    android:enabled="@{ViewModel.isEnableSelfCheckBtn}"
+                    android:visibility="gone"
+                    bind:layout_constraintBottom_toBottomOf="@id/tv_self_check"
+                    bind:layout_constraintLeft_toRightOf="@+id/tv_self_check"
+                    bind:layout_constraintTop_toTopOf="@id/tv_self_check"
+                    bind:onClickCommand="@{ViewModel.onSelfCheckCommand}"
+                    tools:checked="true" />
+
+                <View
+                    android:id="@+id/v3"
+                    style="@style/BaseBorderLineStyle"
+                    bind:layout_constraintTop_toBottomOf="@id/tv_self_check" />
+
+                <TextView
+                    android:id="@+id/tv_rfid"
+                    style="@style/BaseInspectItemStyle"
+                    android:text="@string/base_device_equipment_rfid"
+                    bind:layout_constraintLeft_toLeftOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@id/v3" />
+
+                <TextView
+                    android:id="@+id/tv_rfid_setting"
+                    style="@style/BaseInspectItemStyle"
+                    android:layout_marginLeft="@dimen/dp_25"
+                    android:text="点击设置"
+                    android:textColor="@color/base_home_button"
+                    bind:layout_constraintBottom_toBottomOf="@id/tv_rfid"
+                    bind:layout_constraintLeft_toRightOf="@id/tv_rfid"
+                    bind:layout_constraintTop_toTopOf="@id/tv_rfid"
+                    bind:onClickCommand="@{ViewModel.onRFidSettingCommand}" />
+
+                <TextView
+                    style="@style/BaseInspectItemStyle"
+                    android:layout_marginLeft="@dimen/dp_25"
+                    android:text="@{ViewModel.comName}"
+                    android:textColor="@color/base_default_text_error"
+                    bind:layout_constraintBottom_toBottomOf="@id/tv_rfid"
+                    bind:layout_constraintLeft_toRightOf="@id/tv_rfid_setting"
+                    bind:layout_constraintTop_toTopOf="@id/tv_rfid"
+                    bind:onClickCommand="@{ViewModel.onComSettingCommand}"
+                    tools:text="/dev/ttyS4" />
+
+                <View
+                    android:id="@+id/v4"
+                    style="@style/BaseBorderLineStyle"
+                    bind:layout_constraintTop_toBottomOf="@id/tv_rfid" />
+
+                <TextView
+                    android:id="@+id/tv_debug"
+                    style="@style/BaseInspectItemStyle"
+                    android:text="调试模式"
+                    android:visibility="gone"
+                    bind:layout_constraintLeft_toLeftOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@id/v4" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/sw_debug"
+                    android:layout_width="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_25"
+                    android:layout_marginLeft="@dimen/dp_25"
+                    android:checked="@{ViewModel.uc.debugStatus.booleanValue()}"
+                    android:enabled="@{ViewModel.isEnableDebugBtn}"
+                    android:visibility="gone"
+                    bind:layout_constraintBottom_toBottomOf="@id/tv_debug"
+                    bind:layout_constraintLeft_toRightOf="@+id/tv_debug"
+                    bind:layout_constraintTop_toTopOf="@id/tv_debug"
+                    bind:onClickCommand="@{ViewModel.onDebugCommand}"
+                    tools:checked="true" />
+
+                <View
+                    android:id="@+id/v5"
+                    style="@style/BaseBorderLineStyle"
+                    android:visibility="gone"
+                    bind:layout_constraintTop_toBottomOf="@id/tv_debug" />
+
+                <TextView
+                    android:id="@+id/tv_max_time_tip"
+                    style="@style/BaseInspectItemStyle"
+                    android:text="@string/base_check_max_time"
+                    bind:layout_constraintLeft_toLeftOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@id/v5" />
+
+                <EditText
+                    android:id="@+id/tv_max_time"
+                    style="@style/BaseRfidSettingEditTextViewStyle"
+                    android:layout_width="@dimen/dp_72"
+                    android:layout_marginLeft="@dimen/dp_25"
+                    android:inputType="numberDecimal"
+                    android:text="@={ViewModel.rfidScanTime+``}"
+                    android:textColor="@color/base_home_button"
+                    bind:layout_constraintBottom_toBottomOf="@id/tv_max_time_tip"
+                    bind:layout_constraintLeft_toRightOf="@id/tv_max_time_tip"
+                    bind:layout_constraintTop_toTopOf="@id/tv_max_time_tip"
+                    tools:text="5" />
+
+                <View
+                    android:id="@+id/v6"
+                    style="@style/BaseBorderLineStyle"
+                    android:visibility="gone"
+                    bind:layout_constraintTop_toBottomOf="@id/tv_max_time" />
+
+                <TextView
+                    android:id="@+id/tv_update_tip"
+                    style="@style/BaseInspectItemStyle"
+                    android:text="@string/base_app_update"
+                    bind:layout_constraintLeft_toLeftOf="parent"
+                    bind:layout_constraintTop_toBottomOf="@id/v6" />
+
+                <TextView
+                    android:id="@+id/tv_update"
+                    style="@style/BaseInspectItemStyle"
+                    android:layout_marginLeft="@dimen/dp_25"
+                    android:enabled="@{!ViewModel.isDownload}"
+                    android:text="@{ViewModel.versionName}"
+                    android:textColor="@color/base_home_button"
+                    bind:layout_constraintBottom_toBottomOf="@id/tv_update_tip"
+                    bind:layout_constraintLeft_toRightOf="@id/tv_update_tip"
+                    bind:layout_constraintTop_toTopOf="@id/tv_update_tip"
+                    bind:onClickCommand="@{ViewModel.onUpdateCommand}"
+                    tools:text="1.1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <TextView
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dp_33"
+            android:layout_marginRight="@dimen/dp_33"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:background="@drawable/base_login_button_selector"
+            android:gravity="center"
+            android:text="@string/base_device_equipment_save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            android:visibility="@{ViewModel.isShowKeyboard?View.GONE:View.VISIBLE}"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:layout_constraintHeight_percent="0.12"
+            bind:onClickCommand="@{ViewModel.onSaveCommand}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

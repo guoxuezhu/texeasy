@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="HomeViewModel"
+            type="com.texeasy.view.activity.home.HomeViewModel" />
+
+        <import type="com.texeasy.utils.ViewExtensions" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/home_bg_color">
+
+        <View
+            android:id="@+id/v_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            app:layout_constraintDimensionRatio="540:65"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_shoe_bg"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:background="@drawable/app_bg_circle"
+            app:layout_constraintBottom_toBottomOf="@id/v_title"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="@id/v_title"
+            app:layout_constraintTop_toTopOf="@id/v_title"
+            app:layout_constraintWidth_percent="0.074" />
+
+        <ImageView
+            android:id="@+id/iv_shoe"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="@dimen/dp_4"
+            android:scaleType="fitXY"
+            android:src="@mipmap/app_ic_shoe"
+            app:layout_constraintBottom_toBottomOf="@id/iv_shoe_bg"
+            app:layout_constraintLeft_toLeftOf="@id/iv_shoe_bg"
+            app:layout_constraintRight_toRightOf="@id/iv_shoe_bg"
+            app:layout_constraintTop_toTopOf="@id/iv_shoe_bg" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:gravity="center_vertical"
+            android:text="@{HomeViewModel.deviceName,default=`智能发鞋柜`}"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/v_title"
+            app:layout_constraintLeft_toRightOf="@id/iv_shoe_bg"
+            app:layout_constraintRight_toRightOf="@id/v_title"
+            app:layout_constraintTop_toTopOf="@id/v_title" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:background="@drawable/base_round_accent_10dp_shape"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintDimensionRatio="540:300"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_shoe_info_view" />
+
+        <View
+            android:id="@+id/v1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/dp_10"
+            android:background="@drawable/base_round_10dp_shape"
+            app:layout_constraintDimensionRatio="540:270"
+            app:layout_constraintTop_toBottomOf="@id/rv_list" />
+
+        <TextView
+            android:id="@+id/tv_error"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/dp_10"
+            android:textColor="@color/base_default_text_error"
+            android:textSize="@dimen/sp_11"
+            app:layout_constraintBottom_toBottomOf="@id/v1"
+            app:layout_constraintLeft_toLeftOf="@id/v1"
+            app:layout_constraintRight_toRightOf="@id/v1"
+            app:layout_constraintTop_toTopOf="@id/v1"
+            tools:text="读卡错误，请重试"
+            tools:visibility="gone" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_login_info"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintDimensionRatio="505:130"
+            app:layout_constraintLeft_toLeftOf="@id/v1"
+            app:layout_constraintRight_toRightOf="@id/v1"
+            app:layout_constraintTop_toTopOf="@id/v1"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/iv_doctor"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_18"
+                android:layout_marginBottom="@dimen/dp_18"
+                android:background="@mipmap/app_ic_doctor"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/v_doctor_line"
+                android:layout_width="@dimen/dp_1"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_13"
+                android:layout_marginTop="@dimen/dp_17"
+                android:layout_marginBottom="@dimen/dp_17"
+                android:background="@color/colorAccent"
+                app:layout_constraintLeft_toRightOf="@id/iv_doctor" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_13"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/sp_15"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@id/v_doctor_line"
+                app:layout_constraintTop_toTopOf="@id/v_doctor_line"
+                tools:text="张哈哈" />
+
+            <TextView
+                android:id="@+id/tv_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/tv_name"
+                app:layout_constraintLeft_toRightOf="@id/tv_name"
+                tools:text="外科医生" />
+
+            <TextView
+                android:id="@+id/tv_login_time_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="上次登录时间 "
+                android:textColor="#b6b6b6"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/v_doctor_line"
+                app:layout_constraintLeft_toLeftOf="@id/tv_name" />
+
+            <TextView
+                android:id="@+id/tv_login_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#b6b6b6"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/v_doctor_line"
+                app:layout_constraintLeft_toRightOf="@id/tv_login_time_tip"
+                tools:text="2012年10月12日 13:40" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/tv_logout_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp_10"
+                android:background="@drawable/app_home_logout_button_shape"
+                android:paddingLeft="@dimen/dp_20"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_20"
+                android:paddingBottom="@dimen/dp_10"
+                android:text="登出"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/tv_name"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_name"
+                app:onClickCommand="@{HomeViewModel.onLogoutCommand}" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0_5"
+                android:background="#d0d0d0"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_operate"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/v1"
+            app:layout_constraintLeft_toLeftOf="@id/v1"
+            app:layout_constraintRight_toRightOf="@id/v1"
+            app:layout_constraintTop_toTopOf="@id/v1"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/tv_card_finger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请您刷卡或指纹识别"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/sp_15"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/v_face"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/iv_card"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <ImageView
+                android:id="@+id/iv_card"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:background="@mipmap/app_ic_card"
+                app:layout_constraintBottom_toBottomOf="@id/tv_card_finger"
+                app:layout_constraintDimensionRatio="36:25"
+                app:layout_constraintLeft_toRightOf="@id/tv_card_finger"
+                app:layout_constraintRight_toLeftOf="@id/iv_finger"
+                app:layout_constraintTop_toTopOf="@id/tv_card_finger" />
+
+            <ImageView
+                android:id="@+id/iv_finger"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:background="@mipmap/app_ic_finger"
+                app:layout_constraintBottom_toBottomOf="@id/tv_card_finger"
+                app:layout_constraintDimensionRatio="36:25"
+                app:layout_constraintLeft_toRightOf="@id/iv_card"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_card_finger" />
+
+            <View
+                android:id="@+id/v_face"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/dp_30"
+                android:background="@drawable/app_home_button_shape"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="254:68"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_card_finger"
+                app:layout_constraintWidth_percent="0.47"
+                app:onClickCommand="@{HomeViewModel.onFaceDialog}" />
+
+            <ImageView
+                android:id="@+id/iv_face_icon"
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:background="@mipmap/app_ic_face"
+                app:layout_constraintBottom_toBottomOf="@id/v_face"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toLeftOf="@id/v_face"
+                app:layout_constraintRight_toLeftOf="@id/tv_face"
+                app:layout_constraintTop_toTopOf="@id/v_face" />
+
+            <TextView
+                android:id="@+id/tv_face"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:text="点我刷脸"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_15"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/v_face"
+                app:layout_constraintLeft_toRightOf="@id/iv_face_icon"
+                app:layout_constraintRight_toRightOf="@id/v_face"
+                app:layout_constraintTop_toTopOf="@id/v_face" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TextView
+            android:id="@+id/tv_one_step"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@mipmap/app_ic_home_step"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_22"
+            app:layout_constraintBottom_toTopOf="@id/tv_tip1"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v1"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintWidth_percent="0.1056" />
+
+        <TextView
+            android:id="@+id/tv_tip1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="领取手术鞋"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/sp_15"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tv_tip2"
+            app:layout_constraintLeft_toLeftOf="@id/tv_one_step"
+            app:layout_constraintRight_toRightOf="@id/tv_one_step"
+            app:layout_constraintTop_toBottomOf="@id/tv_one_step" />
+
+        <TextView
+            android:id="@+id/tv_tip2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更鞋区"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/sp_13"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/tv_one_step"
+            app:layout_constraintRight_toRightOf="@id/tv_one_step"
+            app:layout_constraintTop_toBottomOf="@id/tv_tip1" />
+
+        <TextView
+            android:id="@+id/tv_two_step"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_3"
+            android:background="@mipmap/app_ic_home_step_2"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15"
+            app:layout_constraintBottom_toBottomOf="@id/tv_one_step"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toRightOf="@id/tv_one_step"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintWidth_percent="0.08" />
+
+        <TextView
+            android:id="@+id/tv_two_step_tip1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="更换手术鞋"
+            android:textColor="#b6b6b6"
+            android:textSize="@dimen/sp_14"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/tv_two_step"
+            app:layout_constraintRight_toRightOf="@id/tv_two_step"
+            app:layout_constraintTop_toBottomOf="@id/tv_two_step" />
+
+        <TextView
+            android:id="@+id/tv_two_step_tip2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更鞋区"
+            android:textColor="#b6b6b6"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintLeft_toLeftOf="@id/tv_two_step"
+            app:layout_constraintRight_toRightOf="@id/tv_two_step"
+            app:layout_constraintTop_toBottomOf="@id/tv_two_step_tip1" />
+
+        <ImageView
+            android:id="@+id/v_arrow"
+            android:layout_width="@dimen/dp_6"
+            android:layout_height="@dimen/dp_8"
+            android:layout_marginRight="@dimen/dp_5"
+            android:background="@mipmap/app_ic_arrow"
+            app:layout_constraintBottom_toBottomOf="@id/v_line"
+            app:layout_constraintRight_toLeftOf="@id/tv_two_step"
+            app:layout_constraintTop_toTopOf="@id/v_line" />
+
+        <View
+            android:id="@+id/v_line"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_2"
+            android:background="#d0d0d0 "
+            app:layout_constraintBottom_toBottomOf="@id/tv_one_step"
+            app:layout_constraintLeft_toRightOf="@id/tv_one_step"
+            app:layout_constraintRight_toRightOf="@id/v_arrow"
+            app:layout_constraintTop_toTopOf="@id/tv_one_step" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

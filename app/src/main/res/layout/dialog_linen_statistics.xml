@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.texeasy.view.dialog.linenstatistics.LinenStatisticsViewModel" />
+
+        <variable
+            name="adapter"
+            type="BindingRecyclerViewAdapter" />
+
+        <import type="com.example.common.base.BindingRecyclerViewAdapter" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="com.example.common.binding.viewadapter.recyclerview.LineManagers" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/v"
+            android:layout_width="@dimen/dp_413"
+            android:layout_height="@dimen/dp_300"
+            android:background="@drawable/base_round_10dp_shape"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_60"
+            android:gravity="center"
+            android:text="@string/base_linen_info_count"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/base_title_secondary"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/v"
+            app:layout_constraintRight_toRightOf="@id/v"
+            app:layout_constraintTop_toTopOf="@id/v" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="@dimen/dp_362"
+            android:layout_height="@dimen/dp_220"
+            android:background="@drawable/base_dialog_content_shape"
+            app:adapter="@{adapter}"
+            app:itemBinding="@{viewModel.itemBinding}"
+            app:items="@{viewModel.observableList}"
+            app:layoutManager="@{LayoutManagers.linear()}"
+            app:layout_constraintLeft_toLeftOf="@id/v"
+            app:layout_constraintRight_toRightOf="@id/v"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            app:lineManager="@{LineManagers.vertical()}" />
+
+        <ImageView
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginRight="@dimen/dp_5"
+            android:padding="@dimen/dp_6"
+            android:src="@mipmap/base_ic_close"
+            app:layout_constraintRight_toRightOf="@id/tv_title"
+            app:layout_constraintTop_toTopOf="@id/tv_title"
+            app:onClickCommand="@{viewModel.onCloseCommand}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

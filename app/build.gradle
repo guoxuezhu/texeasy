@@ -1,0 +1,154 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    signingConfigs {
+        texeasy {
+            storeFile file('texeasy.jks')
+            storePassword 'texeasy'
+            keyAlias 'texeasy'
+            keyPassword 'texeasy'
+            v1SigningEnabled true
+            v2SigningEnabled false
+        }
+    }
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        ndk {
+            //选择要添加的对应cpu类型的.so库。   // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+            abiFilters 'armeabi', 'armeabi-v7a'
+        }
+        versionCode 1
+        versionName "1.0"
+        buildConfigField "String", "ApplicationId", "\"${applicationId}\""
+
+        flavorDimensions "1"
+    }
+    buildTypes {
+        debug {
+            zipAlignEnabled true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.texeasy
+        }
+        release {
+            zipAlignEnabled true
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.texeasy
+            android.applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    def finalVersionCode = versionCode
+                    output.versionCodeOverride = finalVersionCode
+                    println("outputFileName :  " + outputFileName)
+                    println("finalVersionCode :  " + finalVersionCode)
+                    if (outputFileName != null && outputFileName.endsWith('apk')) {
+                        def fileName = "app-texeasy-v${defaultConfig.versionName}-${releaseTime()}-${variant.productFlavors[0].name}.apk"
+                        outputFileName = fileName
+                    }
+                }
+            }
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+
+        comprehensive {
+            java.srcDirs = ['src/comprehensive/java']
+            res.srcDirs = ['src/comprehensive/res']
+            manifest.srcFile 'src/comprehensive/AndroidManifest.xml'
+        }
+
+        shoe {
+            java.srcDirs = ['src/shoe/java']
+            res.srcDirs = ['src/shoe/res']
+            manifest.srcFile 'src/shoe/AndroidManifest.xml'
+        }
+        department {
+            java.srcDirs = ['src/department/java']
+            res.srcDirs = ['src/department/res']
+            manifest.srcFile 'src/department/AndroidManifest.xml'
+        }
+        dirty {
+            java.srcDirs = ['src/dirty/java']
+            res.srcDirs = ['src/dirty/res']
+            manifest.srcFile 'src/dirty/AndroidManifest.xml'
+        }
+        demo {
+            java.srcDirs = ['src/demo/java']
+            res.srcDirs = ['src/demo/res']
+            manifest.srcFile 'src/demo/AndroidManifest.xml'
+        }
+    }
+
+    productFlavors {
+        comprehensive {
+            applicationId "comprehensive.texeasy"
+            buildConfigField "String", "ChannelId", "\"comprehensive\""
+            resValue "string", "channel_id", "comprehensive"
+            resValue "string", "appName", "综合发放柜"
+        }
+        shoe {
+            applicationId "shoe.texeasy"
+            buildConfigField "String", "ChannelId", "\"shoe\""
+            resValue "string", "channel_id", "shoe"
+            resValue "string", "appName", "发鞋柜"
+        }
+        department {
+            applicationId "department.texeasy"
+            buildConfigField "String", "ChannelId", "\"department\""
+            resValue "string", "channel_id", "department"
+            resValue "string", "appName", "科室发放柜"
+            department
+        }
+        dirty {
+            applicationId "dirty.texeasy"
+            buildConfigField "String", "ChannelId", "\"dirty\""
+            resValue "string", "channel_id", "dirty"
+            resValue "string", "appName", "收脏柜"
+        }
+        demo {
+            applicationId "demo.texeasy"
+            buildConfigField "String", "ChannelId", "\"demo\""
+            resValue "string", "channel_id", "demo"
+            resValue "string", "appName", "泰轻松测试"
+        }
+    }
+}
+
+dependencies {
+    api project(path: ':base')
+    implementation project(path: ':repository')
+    implementation project(path: ':hardware')
+    implementation project(path: ':face')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    debugImplementation project(path: ':logcat')
+}
+
+def releaseTime() {
+    return new Date().format("yyyyMMddHHmm", TimeZone.getTimeZone("GMT+08:00"))
+}

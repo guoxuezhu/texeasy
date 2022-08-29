@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_title">泰轻松</string>
+    <string name="app_equipment_name">%s</string>
+    <string name="app_equipment_alert">当前布草储量</string>
+    <string name="app_percent_tip">占比</string>
+    <string name="app_cabinet_usage">柜子使用情况</string>
+    <string name="app_linen_in_door_info">存取明细</string>
+    <string name="app_linen_name">布草名称</string>
+    <string name="app_linen_no">布草编号</string>
+    <string name="app_linen_current_count">当前数量</string>
+    <string name="app_linen_standard_count">标准数量</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

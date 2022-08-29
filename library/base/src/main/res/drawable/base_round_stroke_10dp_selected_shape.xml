@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="@dimen/dp_1"
+                android:color="#006cfa" />
+            <solid android:color="#eef5fe" />
+            <corners android:radius="@dimen/dp_10" />
+        </shape>
+    </item>
+    <item>
+        <bitmap
+            android:gravity="bottom|right"
+            android:src="@mipmap/base_ic_selected" />
+    </item>
+</layer-list>

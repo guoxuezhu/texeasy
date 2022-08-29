@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_door_open_tip">%s号门已打开，请扫描投递</string>
+    <string name="app_stop_scan_tip">停止扫描</string>
+    <string name="app_stopped_scan_tip">扫描已停止</string>
+</resources>

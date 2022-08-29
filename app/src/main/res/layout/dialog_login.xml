@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="LoginDialog"
+            type="com.texeasy.view.dialog.LoginDialog" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="@color/base_line">
+
+        <View
+            android:id="@+id/v"
+            android:layout_width="@dimen/dp_450"
+            android:layout_height="@dimen/dp_250"
+            android:background="@drawable/base_login_dialog_shape"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_60"
+            android:gravity="center"
+            android:text="登录"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/v"
+            app:layout_constraintRight_toRightOf="@id/v"
+            app:layout_constraintTop_toTopOf="@id/v" />
+
+        <ImageView
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginRight="@dimen/dp_5"
+            android:padding="@dimen/dp_6"
+            android:src="@mipmap/base_ic_close"
+            app:layout_constraintRight_toRightOf="@id/tv_login"
+            app:layout_constraintTop_toTopOf="@id/tv_login"
+            app:onClickCommand="@{LoginDialog.onCloseCommand}" />
+
+        <TextView
+            android:id="@+id/tv_admin"
+            android:layout_width="@dimen/dp_130"
+            android:layout_height="@dimen/dp_168"
+            android:layout_marginLeft="@dimen/dp_22"
+            android:background="@drawable/base_login_dialog_btn_shape"
+            android:gravity="center_horizontal"
+            android:paddingTop="@dimen/dp_20"
+            android:text="管理员登录"
+            android:textSize="@dimen/sp_18"
+            app:layout_constraintLeft_toLeftOf="@+id/v"
+            app:layout_constraintTop_toBottomOf="@id/tv_login"
+            app:onClickCommand="@{LoginDialog.onAdminCommand}" />
+
+        <ImageView
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_103"
+            android:background="@mipmap/base_ic_admin_logo"
+            app:layout_constraintBottom_toBottomOf="@id/tv_admin"
+            app:layout_constraintLeft_toLeftOf="@id/tv_admin"
+            app:layout_constraintRight_toRightOf="@id/tv_admin" />
+
+        <TextView
+            android:id="@+id/tv_device"
+            android:layout_width="@dimen/dp_130"
+            android:layout_height="@dimen/dp_168"
+            android:background="@drawable/base_login_dialog_btn_shape"
+            android:gravity="center_horizontal"
+            android:paddingTop="@dimen/dp_20"
+            android:text="设备登录"
+            android:textSize="@dimen/sp_18"
+            app:layout_constraintLeft_toRightOf="@id/tv_admin"
+            app:layout_constraintRight_toLeftOf="@id/tv_bind_card"
+            app:layout_constraintTop_toBottomOf="@id/tv_login"
+            app:onClickCommand="@{LoginDialog.onBasicSettingCommand}" />
+
+        <ImageView
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_103"
+            android:background="@mipmap/base_ic_admin_logo"
+            app:layout_constraintBottom_toBottomOf="@id/tv_device"
+            app:layout_constraintLeft_toLeftOf="@id/tv_device"
+            app:layout_constraintRight_toRightOf="@id/tv_device" />
+
+        <TextView
+            android:id="@+id/tv_bind_card"
+            android:layout_width="@dimen/dp_130"
+            android:layout_height="@dimen/dp_168"
+            android:layout_marginRight="@dimen/dp_22"
+            android:background="@drawable/base_login_dialog_btn_shape"
+            android:gravity="center_horizontal"
+            android:paddingTop="@dimen/dp_20"
+            android:text="绑定IC卡"
+            android:textSize="@dimen/sp_18"
+            app:layout_constraintRight_toRightOf="@+id/v"
+            app:layout_constraintTop_toBottomOf="@id/tv_login"
+            app:onClickCommand="@{LoginDialog.onBindCardCommand}" />
+
+        <ImageView
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_103"
+            android:background="@mipmap/base_ic_admin_logo"
+            app:layout_constraintBottom_toBottomOf="@id/tv_bind_card"
+            app:layout_constraintLeft_toLeftOf="@id/tv_bind_card"
+            app:layout_constraintRight_toRightOf="@id/tv_bind_card" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

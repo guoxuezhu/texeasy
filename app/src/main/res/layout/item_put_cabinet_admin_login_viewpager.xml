@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.texeasy.view.fragment.putcabinet.PutCabinetPageViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        tools:context=".ui.admin.AdminFragment">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ll_account"
+            style="@style/EasyTextInputLayoutStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:drawablePadding="5dp"
+            bind:endIconMode="clear_text"
+            bind:errorEnabled="true"
+            bind:errorTextColor="@color/base_default_text_error"
+            bind:layout_constraintBottom_toTopOf="@id/ll_psw"
+            bind:layout_constraintDimensionRatio="320:60"
+            bind:layout_constraintLeft_toLeftOf="parent"
+            bind:layout_constraintRight_toRightOf="parent"
+            bind:layout_constraintTop_toTopOf="parent"
+            bind:layout_constraintVertical_chainStyle="packed"
+            bind:layout_constraintWidth_percent="0.5"
+            bind:startIconDrawable="@mipmap/base_ic_account">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/EasyTextInputEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/base_admin_name"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:textColor="@color/base_default_text"
+                android:textColorHint="@color/base_default_text_hint"
+                android:textSize="20sp"
+                bind:textChanged="@{viewModel.onAccountCommand}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ll_psw"
+            style="@style/EasyTextInputLayoutStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:drawablePadding="5dp"
+            bind:endIconMode="password_toggle"
+            bind:errorEnabled="true"
+            bind:errorTextColor="@color/base_default_text_error"
+            bind:layout_constraintBottom_toTopOf="@id/btn_login"
+            bind:layout_constraintDimensionRatio="320:60"
+            bind:layout_constraintLeft_toLeftOf="@id/ll_account"
+            bind:layout_constraintRight_toRightOf="@id/ll_account"
+            bind:layout_constraintTop_toBottomOf="@id/ll_account"
+            bind:layout_constraintWidth_percent="0.5"
+            bind:startIconDrawable="@mipmap/base_ic_psw">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/EasyTextInputEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/base_admin_psw"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:textColor="@color/base_default_text"
+                android:textColorHint="@color/base_default_text_hint"
+                android:textSize="20sp"
+                bind:textChanged="@{viewModel.onPswCommand}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/btn_login"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/base_home_button_selector"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/base_admin_login"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:layout_constraintLeft_toLeftOf="@id/ll_account"
+            bind:layout_constraintRight_toRightOf="@id/ll_account"
+            bind:layout_constraintTop_toBottomOf="@id/ll_psw"
+            bind:onClickCommand="@{viewModel.onLoginCommand}"
+            bind:spinning_bar_color="@color/colorPrimary"
+            bind:spinning_bar_padding="5dp"
+            bind:spinning_bar_width="3dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

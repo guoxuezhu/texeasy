@@ -1,0 +1,26 @@
+package com.example.common.base;
+
+
+import androidx.annotation.NonNull;
+
+/**
+ * Create Author：goldze
+ * Create Date：2019/01/25
+ * Description：RecycleView多布局ItemViewModel是封装
+ */
+
+public class MultiItemViewModel<VM extends BaseViewModel> extends ItemViewModel {
+    protected Object multiType;
+
+    public Object getItemType() {
+        return multiType;
+    }
+
+    public void multiItemType(@NonNull Object multiType) {
+        this.multiType = multiType;
+    }
+
+    public MultiItemViewModel(@NonNull VM viewModel) {
+        super(viewModel);
+    }
+}

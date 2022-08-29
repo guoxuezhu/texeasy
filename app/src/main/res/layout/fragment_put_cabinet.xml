@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.texeasy.view.fragment.putcabinet.PutCabinetViewModel" />
+
+        <import type="com.texeasy.binding.PutCabinetPagerBindingAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tl_tab"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            bind:bindViewPager="@{ViewModel.viewPageId}"
+            bind:layout_constraintDimensionRatio="360:30"
+            bind:layout_constraintLeft_toLeftOf="parent"
+            bind:layout_constraintRight_toRightOf="parent"
+            bind:layout_constraintTop_toTopOf="parent"
+            bind:tabGravity="fill"
+            bind:tabIndicator="@drawable/base_bg_tab_indicator_shape"
+            bind:tabIndicatorFullWidth="false"
+            bind:tabIndicatorHeight="2dp"
+            bind:tabMode="fixed"
+            bind:tabsTitleRes="@{ViewModel.tabsTitleRes}"
+            tools:background="@color/white" />
+
+        <View
+            android:id="@+id/v_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/common_borderLineColor"
+            bind:layout_constraintTop_toBottomOf="@id/tl_tab" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            bind:anim="@{true}"
+            bind:itemBinding="@{ViewModel.itemBinding}"
+            bind:items="@{ViewModel.pageItems}"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:layout_constraintTop_toBottomOf="@id/v_line"
+            bind:limit="@{2}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/btn_cancel"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:padding="10dp"
+        android:src="@drawable/base_ic_cancel"
+        app:layout_constraintBottom_toBottomOf="@id/btn_sure"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_sure" />
+
+    <ImageView
+        android:id="@+id/btn_sure"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:padding="10dp"
+        android:src="@drawable/base_right_check_button_selector"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.weigan.loopview.LoopView
+        android:id="@+id/loop_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:awv_isLoop="false"
+        app:awv_textsize="16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_sure" />
+</androidx.constraintlayout.widget.ConstraintLayout>
